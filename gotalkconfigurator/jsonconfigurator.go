@@ -1,4 +1,4 @@
-package hydraconfigurator
+package gotalkconfigurator
 
 import (
 	"encoding/json"
