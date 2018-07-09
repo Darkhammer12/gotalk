@@ -14,7 +14,7 @@ type gLogger struct {
 var glogger *gotalkLogger
 var once sync.Once
 
-//GetInstance create a singleton instance of the hydra logger
+//GetInstance create a singleton instance of the glogger
 func GetInstance() *gotalkLogger {
 	once.Do(func() {
 		glogger = createLogger("gotalkLogger.log")
