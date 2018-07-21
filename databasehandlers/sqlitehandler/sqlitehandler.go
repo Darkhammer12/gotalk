@@ -23,7 +23,7 @@ type crewMember struct {
 type Crew []crewMember
 
 func main() {
-	db, err := sql.Open("sqlite3", "gotalk.db")
+	db, err := sql.Open("sqlite3", "hydra.db")
 	if err != nil {
 		log.Fatal("Could not connect, error ", err.Error())
 	}

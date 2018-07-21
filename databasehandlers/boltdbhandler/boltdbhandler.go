@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	db, err := bolt.Open("gotalk.db", 0600, nil)
+	db, err := bolt.Open("hydra.db", 0600, nil)
 	if err != nil {
 		log.Fatal(err)
 	}

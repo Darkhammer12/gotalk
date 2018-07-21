@@ -1,22 +1,46 @@
 package main
 
 import (
-	"fmt"
-	"gotalk/glogger"
-	"net/http"
+	"Hydra/hlogger"
+	"Hydra/hydrachat"
+	"Hydra/hydraweb/hydraportal"
+	"flag"
+	"strings"
+	//"Hydra/hydradblayer/passwordvault"
+	//"crypto/md5"
 )
 
 func main() {
-	logger := glogger.GetInstance()
-	logger.Println("Starting gotalk web service")
+	logger := hlogger.GetInstance()
+	logger.Println("Starting Hydra web service")
+	operation := flag.String("o", "w", "Operation: w for web \n c for chat")
+	flag.Parse()
+	switch strings.ToLower(*operation) {
+	case "c":
+		err := hydrachat.Run(":2100")
+		if err != nil {
+			logger.Println("Could not run hydra chat", err)
+		}
+	case "w":
+		err := hydraportal.Run()
+		if err != nil {
+			logger.Println("could not run hydra web portal", err)
+		}
+	}
 
-	http.HandelFunc("/", sroot)
-	http.ListenAndServe(":8080", nil)
-}
+	/*
+		code to populate some password in the pass vault
+		db,err := passwordvault.ConnectPasswordVault()
+		if err!= nil{
+			return
+		}
+		minapss := md5.Sum([]byte("minaspass"))
+		jimpass := md5.Sum([]byte("jimspass"))
+		caropass := md5.Sum([]byte("carospass"))
+		passwordvault.AddBytesToVault(db,"Mina",minapss[:])
+		passwordvault.AddBytesToVault(db,"Jim",jimpass[:])
+		passwordvault.AddBytesToVault(db,"Caro",caropass[:])
+		db.Close()
+	*/
 
-func sroot(w http.ResponseWriter, r *http.Request) {
-	logger := glogger.GetInstance()
-	fmt.Fprint(w, "Wlecome to the gotalk software system")
-
-	logger.Println("Recieved an http request on root url")
 }
