@@ -6,4 +6,5 @@
 ## Task 4: Building the chat client with a Fan in and Fan out pattern.
 ## Task 5: Build a custom file config. With the 3 laws of reflection.
 ## Task 6: Building a file handler + json/XML encoders
-## Task 7: Setting up Database readers + connecting to the database.
+## Task 7: Setting up Database readers + connecting to the database. MongoDB + MYSQL   With built in connectors for SQlight + BOLT if wanted to be used later for quick relational or Key Value work.
+## Task 8 TCP clients
