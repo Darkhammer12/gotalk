@@ -9,3 +9,4 @@
 ## Task 7: Setting up Database readers + connecting to the database. MongoDB + MYSQL   With built in connectors for SQlight + BOLT if wanted to be used later for quick relational or Key Value work.
 ## Task 8 TCP clients + Servers and Buffer Protocol
 ## Task 9 refactor naming to project hydra
+## Task 10 build the rest API and Web Portal
