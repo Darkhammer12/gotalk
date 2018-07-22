@@ -1,4 +1,4 @@
-package gchat
+ackage hydrachat
 
 import (
 	"bufio"
@@ -15,12 +15,12 @@ var once sync.Once
 
 func chatServerFunc(t *testing.T) func() {
 	return func() {
-		t.Log("Starting gotalk chat server.. ")
+		t.Log("Starting Hydra chat server.. ")
 		if err := Run(":2300"); err != nil {
 			t.Error("Could not start chat server ", err)
 			return
 		} else {
-			t.Log("Started gotalk chat server...")
+			t.Log("Started Hydra chat server...")
 		}
 	}
 }
@@ -29,7 +29,7 @@ func TestRun(t *testing.T) {
 	if testing.Short() {
 		t.Skip("Skipping test in short mode... ")
 	}
-	t.Log("Testing gotalk chat send and receive... ")
+	t.Log("Testing hydra chat send and receive... ")
 	f := chatServerFunc(t)
 	go once.Do(f)
 
@@ -42,9 +42,9 @@ func TestRun(t *testing.T) {
 	t.Logf("Hello %s, connecting to the hydra chat system.... \n", name)
 	conn, err := net.Dial("tcp", "127.0.0.1:2300")
 	if err != nil {
-		t.Fatal("Could not connect to gotalk chat system", err)
+		t.Fatal("Could not connect to hydra chat system", err)
 	}
-	t.Log("Connected to gotalk chat system")
+	t.Log("Connected to hydra chat system")
 	name += ":"
 	defer conn.Close()
 	msgCh := make(chan string)
@@ -72,7 +72,7 @@ func TestRun(t *testing.T) {
 }
 
 func TestServerConnection(t *testing.T) {
-	t.Log("Test gotalk chat receive messages... ")
+	t.Log("Test hydra chat receive messages... ")
 	f := chatServerFunc(t)
 	go once.Do(f)
 	//Let's wait for one second assuming the chat server succeeded
